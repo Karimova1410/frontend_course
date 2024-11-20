@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 
 const Person = () => {
@@ -5,10 +6,16 @@ const Person = () => {
 		name: "Karimova Roza",
 		position: "Junior Java Developer",
 		company: "NVIDIA",
-    experience: 2,
+		experience: 2,
 		age: 20,
 		location: "Bishkek",
 		hobby: "Chess",
+	};
+
+	const [message, setMessage] = useState("");
+
+	const handleClick = () => {
+		setMessage("Button clicked!");
 	};
 
 	return (
@@ -34,7 +41,8 @@ const Person = () => {
 					<span>Hobby:</span> {person.hobby}
 				</li>
 			</ul>
-			<button>Click me</button>
+			{message && <p className='cv-message'>{message}</p>}
+			<button onClick={handleClick}>Promote</button>
 		</div>
 	);
 };
