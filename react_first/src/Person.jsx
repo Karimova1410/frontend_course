@@ -42,7 +42,7 @@ const Person = () => {
 				</li>
 			</ul>
 			{message && <p className='cv-message'>{message}</p>}
-			<button onClick={handleClick}>Promote</button>
+			<button onClick={handleClick}>Повысить в должности</button>
 		</div>
 	);
 };
