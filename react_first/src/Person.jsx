@@ -12,27 +12,40 @@ const Person = () => {
 		hobby: "Chess",
 	};
 
-	const [message, setMessage] = useState("");
+	const positions = [
+		"Junior Java Developer",
+		"Middle Java Developer",
+		"Senior Java Developer",
+		"Lead Java Developer",
+		"Principal Java Developer",
+	];
 
-	const handleClick = () => {
-		setMessage("Button clicked!");
+	const [currentPositionIndex, setCurrentPositionIndex] = useState(0);
+	const [age, setAge] = useState(person.age);
+	const [experience, setExperience] = useState(person.experience);
+
+	const handlePromote = () => {
+		setCurrentPositionIndex(prevIndex =>
+			prevIndex < positions.length - 1 ? prevIndex + 1 : prevIndex
+		);
+		setAge(prevAge => prevAge + 1);
+		setExperience(prevExp => prevExp + 1);
 	};
-
 	return (
 		<div className='cv-container'>
 			<div>
 				<h1 className='cv-name'>{person.name}</h1>
-				<p className='cv-position'>{person.position}</p>
+				<p className='cv-position'>{positions[currentPositionIndex]}</p>
 			</div>
 			<ul className='cv-details'>
 				<li>
 					<span>Company:</span> {person.company}
 				</li>
 				<li>
-					<span>Experience:</span> {person.experience} <span>years</span>
+					<span>Experience:</span> {experience} <span>years</span>
 				</li>
 				<li>
-					<span>Age:</span> {person.age} <span>y.o.</span>
+					<span>Age:</span> {age} <span>y.o.</span>
 				</li>
 				<li>
 					<span>Location:</span> {person.location}
@@ -41,8 +54,7 @@ const Person = () => {
 					<span>Hobby:</span> {person.hobby}
 				</li>
 			</ul>
-			{message && <p className='cv-message'>{message}</p>}
-			<button onClick={handleClick}>Повысить в должности</button>
+			<button onClick={handlePromote}>Promote</button>
 		</div>
 	);
 };
