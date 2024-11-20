@@ -34,6 +34,7 @@ const Person = () => {
 					<span>Hobby:</span> {person.hobby}
 				</li>
 			</ul>
+			<button>Click me</button>
 		</div>
 	);
 };
