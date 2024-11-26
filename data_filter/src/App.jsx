@@ -19,6 +19,8 @@ function App() {
 				{ id: 10, name: "Zharkynai" },
 				{ id: 11, name: "Anzhelika" },
 			];
+      setData(names);
+
 		};
 
 		fetchData();
