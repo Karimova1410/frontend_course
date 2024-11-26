@@ -1,10 +1,10 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import "./App.css"; 
 function App() {
 	const [data, setData] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
+	useEffect(() => {
 		const fetchData = async () => {
 			const names = [
 				{ id: 1, name: "Roza" },
@@ -19,16 +19,22 @@ function App() {
 				{ id: 10, name: "Zharkynai" },
 				{ id: 11, name: "Anzhelika" },
 			];
-			setData(names);
 		};
 
 		fetchData();
 	}, []);
 
-
 	return (
-		<div>
+		<div className='container'>
 			<h1>Data filtering</h1>
+			<div className='input-container'>
+				<input
+					type='text'
+					placeholder='Search name...'
+					value={searchTerm}
+					onChange={e => setSearchTerm(e.target.value)}
+				/>
+			</div>
 		</div>
 	);
 }
