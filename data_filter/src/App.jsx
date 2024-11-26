@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./App.css"; 
+import "./App.css";
 function App() {
 	const [data, setData] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +24,10 @@ function App() {
 		fetchData();
 	}, []);
 
+  const filteredData = data.filter(item =>
+		item.name.toLowerCase().includes(searchTerm.toLowerCase())
+	);
+
 	return (
 		<div className='container'>
 			<h1>Data filtering</h1>
@@ -35,6 +39,11 @@ function App() {
 					onChange={e => setSearchTerm(e.target.value)}
 				/>
 			</div>
+			<ul>
+				{filteredData.map(item => (
+					<li key={item.id}>{item.name}</li>
+				))}
+			</ul>
 		</div>
 	);
 }
